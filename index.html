@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نور القرآن — Lumière du Coran</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D5A3;
+    --gold-dark: #8B6914;
+    --cream: #FDFAF4;
+    --white: #FFFFFF;
+    --dark: #1A1208;
+    --text: #2C2010;
+    --text-muted: #6B5830;
+    --border: #E2CFA0;
+    --section-bg: #F9F5EA;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Cormorant Garamond', serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  .gold-line {
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 1.5rem auto;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--dark);
+    color: var(--gold-light);
+    text-align: center;
+    padding: 3rem 2rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 20% 50%, rgba(201,168,76,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 50%, rgba(201,168,76,0.08) 0%, transparent 60%);
+  }
+  .arabic-title {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1.2;
+    text-shadow: 0 2px 20px rgba(201,168,76,0.3);
+    animation: fadeDown 1s ease both;
+  }
+  .french-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gold-light);
+    letter-spacing: 0.3rem;
+    margin-top: 0.5rem;
+    animation: fadeDown 1s 0.2s ease both;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+  .header-tagline {
+    font-size: 0.8rem;
+    color: rgba(232,213,163,0.5);
+    letter-spacing: 0.2rem;
+    margin-top: 1.5rem;
+    animation: fadeDown 1s 0.4s ease both;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-15px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* NAV */
+  nav {
+    background: var(--white);
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(139,105,20,0.08);
+  }
+  nav ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+  }
+  nav ul li a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.1rem 1.4rem;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.03rem;
+    border-bottom: 3px solid transparent;
+    transition: color 0.3s, background 0.3s, border-color 0.3s;
+  }
+  nav ul li a:hover, nav ul li a.active {
+    color: var(--gold-dark);
+    border-bottom-color: var(--gold);
+    background: rgba(201,168,76,0.05);
+  }
+
+  /* HERO VERSE */
+  .hero-verse {
+    background: linear-gradient(135deg, #1A1208 0%, #2C1F0A 50%, #1A1208 100%);
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+  .verse-arabic {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    color: var(--gold-light);
+    line-height: 2;
+    direction: rtl;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    text-shadow: 0 2px 15px rgba(201,168,76,0.2);
+  }
+  .verse-translation {
+    font-style: italic;
+    font-size: 1.1rem;
+    color: rgba(232,213,163,0.7);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .verse-ref {
+    font-size: 0.85rem;
+    color: var(--gold);
+    margin-top: 1rem;
+    letter-spacing: 0.1rem;
+  }
+
+  /* SECTION COMMONS */
+  .section-header { text-align: center; margin-bottom: 3.5rem; }
+  .section-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.4rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .section-title-fr {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .section-title-ar {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    color: var(--gold-dark);
+    margin-top: 0.3rem;
+    direction: rtl;
+  }
+
+  /* RECITATEURS */
+  .recitateurs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .recitateur-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.8rem 1.2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .recitateur-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark));
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+  .recitateur-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(139,105,20,0.12); border-color: var(--gold); }
+  .recitateur-card:hover::after { transform: scaleX(1); }
+  .recitateur-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+  .recitateur-name-ar { font-family: 'Noto Naskh Arabic', serif; font-size: 1.05rem; color: var(--text); direction: rtl; display: block; margin-bottom: 0.2rem; }
+  .recitateur-name-fr { font-size: 0.82rem; color: var(--text-muted); font-style: italic; }
+  .recitateur-style {
+    display: inline-block;
+    margin-top: 0.8rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.1rem;
+    padding: 0.2rem 0.8rem;
+    border: 1px solid var(--gold-light);
+    color: var(--gold-dark);
+    border-radius: 20px;
+  }
+
+  /* TAFSIR */
+  .tafsir-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .tafsir-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2rem;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .tafsir-card:hover { box-shadow: 0 8px 30px rgba(139,105,20,0.1); border-color: var(--gold); }
+  .tafsir-badge {
+    display: inline-block;
+    background: var(--dark);
+    color: var(--gold);
+    font-size: 0.7rem;
+    letter-spacing: 0.15rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 2px;
+    align-self: flex-start;
+  }
+  .tafsir-title-ar { font-family: 'Noto Naskh Arabic', serif; font-size: 1.3rem; direction: rtl; color: var(--text); line-height: 1.6; }
+  .tafsir-title-fr { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-style: italic; color: var(--text-muted); }
+  .tafsir-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+  .tafsir-author { font-size: 0.85rem; color: var(--gold-dark); font-weight: 600; border-top: 1px solid var(--border); padding-top: 0.8rem; margin-top: auto; }
+  .btn-gold {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 1.3rem;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold-dark);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    align-self: flex-start;
+  }
+  .btn-gold:hover { background: var(--gold); color: var(--dark); }
+
+  /* VIDEOS */
+  .videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 1.8rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .video-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  .video-card:hover { box-shadow: 0 10px 35px rgba(139,105,20,0.12); transform: translateY(-3px); }
+  .video-thumb {
+    height: 155px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    position: relative;
+    cursor: pointer;
+  }
+  .play-btn {
+    position: absolute;
+    color: var(--gold);
+    font-size: 1.3rem;
+    background: rgba(0,0,0,0.5);
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--gold);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .video-card:hover .play-btn { opacity: 1; }
+  .video-info { padding: 1.2rem 1.5rem; }
+  .video-category { font-size: 0.7rem; letter-spacing: 0.2rem; color: var(--gold); text-transform: uppercase; font-weight: 600; }
+  .video-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--text); margin-top: 0.3rem; line-height: 1.4; }
+  .video-title-ar { font-family: 'Noto Naskh Arabic', serif; font-size: 0.92rem; color: var(--text-muted); direction: rtl; display: block; margin-top: 0.2rem; }
+
+  /* LIVRES */
+  .livres-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .livre-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .livre-card:hover { box-shadow: 0 8px 30px rgba(139,105,20,0.1); border-color: var(--gold); transform: translateY(-3px); }
+  .livre-icon { font-size: 3rem; filter: drop-shadow(0 2px 6px rgba(201,168,76,0.3)); }
+  .livre-title-ar { font-family: 'Noto Naskh Arabic', serif; font-size: 1.05rem; color: var(--text); direction: rtl; line-height: 1.5; }
+  .livre-title-fr { font-size: 0.82rem; color: var(--text-muted); font-style: italic; line-height: 1.4; }
+  .livre-pages { font-size: 0.72rem; color: var(--gold-dark); letter-spacing: 0.1rem; }
+  .btn-dl {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1.1rem;
+    background: var(--dark);
+    color: var(--gold-light);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: all 0.3s;
+    border: 1px solid var(--dark);
+  }
+  .btn-dl:hover { background: var(--gold); color: var(--dark); border-color: var(--gold); }
+
+  /* Q&R */
+  .qr-container { max-width: 800px; margin: 0 auto; }
+  .question-item {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .question-item.open { border-color: var(--gold); }
+  .question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.3rem 1.8rem;
+    cursor: pointer;
+    background: var(--cream);
+    user-select: none;
+    transition: background 0.3s;
+    gap: 1rem;
+  }
+  .question-item.open .question-header { background: var(--section-bg); }
+  .question-fr { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--text); font-weight: 600; }
+  .question-ar { font-family: 'Noto Naskh Arabic', serif; font-size: 0.92rem; color: var(--text-muted); direction: rtl; display: block; margin-top: 0.2rem; }
+  .question-toggle { color: var(--gold); font-size: 1.4rem; font-weight: 300; line-height: 1; transition: transform 0.3s; flex-shrink: 0; }
+  .question-item.open .question-toggle { transform: rotate(45deg); }
+  .question-answer { padding: 0 1.8rem; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; }
+  .question-item.open .question-answer { max-height: 400px; padding: 1.5rem 1.8rem; }
+  .answer-text { font-size: 1rem; line-height: 1.8; color: var(--text); border-left: 3px solid var(--gold); padding-left: 1.2rem; }
+  .answer-source { margin-top: 0.8rem; font-size: 0.8rem; color: var(--gold-dark); font-style: italic; }
+
+  /* FORM */
+  .qr-form {
+    margin-top: 3rem;
+    background: var(--section-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2.5rem;
+  }
+  .form-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--text); margin-bottom: 0.2rem; }
+  .form-title-ar { font-family: 'Noto Naskh Arabic', serif; font-size: 1.1rem; color: var(--gold-dark); direction: rtl; display: block; margin-bottom: 1.5rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group.full { grid-column: 1/-1; }
+  label { font-size: 0.75rem; letter-spacing: 0.12rem; color: var(--text-muted); font-weight: 600; }
+  input, textarea, select {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--border);
+    background: var(--white);
+    color: var(--text);
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  input:focus, textarea:focus, select:focus { border-color: var(--gold); }
+  textarea { resize: vertical; min-height: 120px; }
+  .btn-submit {
+    margin-top: 1rem;
+    padding: 0.9rem 2.5rem;
+    background: var(--dark);
+    color: var(--gold-light);
+    border: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .btn-submit:hover { background: var(--gold); color: var(--dark); }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    color: var(--gold-light);
+    text-align: center;
+    padding: 3rem 2rem;
+  }
+  .footer-arabic { font-family: 'Noto Naskh Arabic', serif; font-size: 1.5rem; color: var(--gold); direction: rtl; margin-bottom: 0.5rem; }
+  .footer-text { font-size: 0.82rem; color: rgba(232,213,163,0.45); letter-spacing: 0.1rem; margin-top: 1.5rem; }
+
+  /* SCROLL ANIMATION */
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* PADDING SECTIONS */
+  .sec { padding: 5rem 2rem; }
+
+  /* AUDIO PLAYER */
+  .player-bar {
+    background: var(--dark);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 6px;
+    padding: 1.2rem 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+    box-shadow: 0 8px 30px rgba(26,18,8,0.15);
+  }
+  .player-info { display: flex; align-items: center; gap: 1rem; flex: 1; min-width: 180px; }
+  .player-icon { font-size: 2rem; }
+  .player-recitateur { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; color: var(--gold-light); }
+  .player-sourate { font-size: 0.82rem; color: rgba(232,213,163,0.55); margin-top: 0.1rem; font-style: italic; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 220px; }
+  .player-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .ctrl-btn {
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold-light);
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .ctrl-btn:hover { background: var(--gold); color: var(--dark); border-color: var(--gold); }
+  .play-main { width: 48px; height: 48px; font-size: 1.1rem; background: var(--gold); color: var(--dark); border-color: var(--gold); }
+  .play-main:hover { background: var(--gold-light); }
+  .player-progress-wrap { display: flex; align-items: center; gap: 0.6rem; flex: 2; min-width: 200px; }
+  .progress-bar { flex: 1; height: 5px; background: rgba(201,168,76,0.2); border-radius: 3px; cursor: pointer; position: relative; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--gold); width: 0%; border-radius: 3px; transition: width 0.5s linear; }
+  .time-label { font-size: 0.78rem; color: rgba(232,213,163,0.6); font-family: monospace; white-space: nowrap; }
+  .player-volume { display: flex; align-items: center; gap: 0.5rem; }
+  .player-volume input[type=range] { width: 80px; height: 4px; accent-color: var(--gold); cursor: pointer; padding: 0; border: none; background: transparent; }
+  .recitateur-card.selected { border-color: var(--gold); background: rgba(201,168,76,0.08); box-shadow: 0 6px 20px rgba(201,168,76,0.15); }
+  .recitateur-card.selected::after { transform: scaleX(1); }
+  .rec-tracks-count { display: block; font-size: 0.72rem; color: var(--gold-dark); margin-top: 0.4rem; font-style: italic; }
+  .tracks-panel { background: var(--section-bg); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+  .tracks-header { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 1.5rem; background: var(--dark); gap: 1rem; flex-wrap: wrap; }
+  .tracks-title { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--gold-light); font-weight: 600; }
+  .upload-btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.55rem 1.2rem; background: var(--gold); color: var(--dark); font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; font-weight: 700; border-radius: 3px; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+  .upload-btn:hover { background: var(--gold-light); }
+  .tracks-list { max-height: 340px; overflow-y: auto; }
+  .tracks-empty { text-align: center; padding: 2.5rem 1rem; color: var(--text-muted); font-style: italic; font-size: 0.95rem; line-height: 1.8; }
+  .track-item { display: flex; align-items: center; gap: 1rem; padding: 0.9rem 1.5rem; border-bottom: 1px solid var(--border); cursor: pointer; transition: background 0.2s; }
+  .track-item:hover { background: rgba(201,168,76,0.06); }
+  .track-item.playing { background: rgba(201,168,76,0.1); }
+  .track-num { font-size: 0.8rem; color: var(--gold); font-weight: 600; min-width: 24px; }
+  .track-name { flex: 1; font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--text); }
+  .track-dur { font-size: 0.8rem; color: var(--text-muted); font-family: monospace; }
+  .track-play-icon { font-size: 0.85rem; color: var(--gold); width: 20px; text-align: center; }
+  .track-del { background: none; border: none; color: rgba(139,105,20,0.4); cursor: pointer; font-size: 1rem; padding: 0.2rem 0.4rem; transition: color 0.2s; }
+  .track-del:hover { color: #c0392b; }
+  .audio-help { max-width: 800px; margin: 2rem auto 0; padding: 1rem 1.5rem; background: rgba(201,168,76,0.07); border: 1px dashed var(--gold-light); border-radius: 4px; font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; text-align: center; }
+
+  /* VIDEO EMBED */
+  .video-embed-wrap {
+    position: relative;
+    background: var(--dark);
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+  }
+  .video-embed-wrap video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .video-card { border-radius: 4px; overflow: hidden; border: 1px solid var(--border); transition: all 0.3s; background: var(--cream); }
+  .video-card:hover { box-shadow: 0 10px 35px rgba(139,105,20,0.12); transform: translateY(-3px); }
+
+  @media (max-width: 600px) {
+    nav ul li a { padding: 0.9rem 0.7rem; font-size: 0.8rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .recitateurs-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="arabic-title">نور القرآن</div>
+  <div class="french-title">Lumière du Coran</div>
+  <div class="gold-line"></div>
+  <div class="header-tagline">PORTAIL ISLAMIQUE FRANCOPHONE · SCIENCE · SPIRITUALITÉ · GUIDANCE</div>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#coran" class="active">📖 Coran & Récitateurs</a></li>
+    <li><a href="#tafsir">✦ Tafsirs</a></li>
+    <li><a href="#videos">▶ Vidéos</a></li>
+    <li><a href="#livres">📚 Livres PDF</a></li>
+    <li><a href="#qr">❓ Q & R</a></li>
+  </ul>
+</nav>
+
+<div class="hero-verse">
+  <div class="verse-arabic">إِنَّ هَٰذَا الْقُرْآنَ يَهْدِي لِلَّتِي هِيَ أَقْوَمُ</div>
+  <div class="verse-translation">« Certes, ce Coran guide vers ce qui est le plus droit »</div>
+  <div class="verse-ref">— Sourate Al-Isrâ' (17 : 9)</div>
+</div>
+
+<!-- SECTION 1 : CORAN -->
+<section id="coran" class="sec" style="background: var(--white);">
+  <div class="section-header fade-in">
+    <div class="section-label">القرآن الكريم</div>
+    <div class="section-title-fr">Lecture du Saint Coran</div>
+    <div class="section-title-ar">اختر القارئ الذي يناسبك</div>
+    <div class="gold-line" style="margin-top:1rem;"></div>
+    <p style="color:var(--text-muted); font-style:italic; margin-top:0.8rem; font-size:1rem;">Cliquez sur un récitateur pour écouter ses récitations</p>
+  </div>
+
+  <!-- LECTEUR AUDIO PRINCIPAL -->
+  <div class="player-bar fade-in" id="playerBar">
+    <div class="player-info">
+      <div class="player-icon">🎙️</div>
+      <div class="player-text">
+        <div class="player-recitateur" id="playerName">Sélectionnez un récitateur</div>
+        <div class="player-sourate" id="playerSourate">— Aucune récitation en cours —</div>
+      </div>
+    </div>
+    <div class="player-controls">
+      <button class="ctrl-btn" onclick="prevTrack()" title="Précédent">⏮</button>
+      <button class="ctrl-btn play-main" id="playBtn" onclick="togglePlay()">▶</button>
+      <button class="ctrl-btn" onclick="nextTrack()" title="Suivant">⏭</button>
+    </div>
+    <div class="player-progress-wrap">
+      <span class="time-label" id="timeElapsed">0:00</span>
+      <div class="progress-bar" onclick="seekAudio(event)">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <span class="time-label" id="timeDuration">0:00</span>
+    </div>
+    <div class="player-volume">
+      <span>🔊</span>
+      <input type="range" id="volumeSlider" min="0" max="1" step="0.05" value="1" oninput="setVolume(this.value)">
+    </div>
+    <audio id="audioPlayer" onended="nextTrack()"></audio>
+  </div>
+
+  <!-- GRILLE RÉCITATEURS -->
+  <div class="recitateurs-grid" style="margin-top:2.5rem;">
+    <div class="recitateur-card fade-in" onclick="selectRecitateur(this, 'Mishary Rachid Al-Afasy', 'مشاري راشد العفاسي', 'afasy')" data-recitateur="afasy">
+      <span class="recitateur-icon">🎙️</span>
+      <span class="recitateur-name-ar">مشاري راشد العفاسي</span>
+      <span class="recitateur-name-fr">Mishary Rachid Al-Afasy</span>
+      <span class="recitateur-style">Murattal</span>
+      <span class="rec-tracks-count" id="count-afasy">0 fichier(s)</span>
+    </div>
+    <div class="recitateur-card fade-in" onclick="selectRecitateur(this, 'Abd Al-Baset Abd Al-Samad', 'عبد الباسط عبد الصمد', 'baset')" data-recitateur="baset">
+      <span class="recitateur-icon">🎙️</span>
+      <span class="recitateur-name-ar">عبد الباسط عبد الصمد</span>
+      <span class="recitateur-name-fr">Abd Al-Baset Abd Al-Samad</span>
+      <span class="recitateur-style">Mujawwad</span>
+      <span class="rec-tracks-count" id="count-baset">0 fichier(s)</span>
+    </div>
+    <div class="recitateur-card fade-in" onclick="selectRecitateur(this, 'Mahmoud Khalil Al-Hussary', 'محمود خليل الحصري', 'hussary')" data-recitateur="hussary">
+      <span class="recitateur-icon">🎙️</span>
+      <span class="recitateur-name-ar">محمود خليل الحصري</span>
+      <span class="recitateur-name-fr">Mahmoud Khalil Al-Hussary</span>
+      <span class="recitateur-style">Tajwid</span>
+      <span class="rec-tracks-count" id="count-hussary">0 fichier(s)</span>
+    </div>
+    <div class="recitateur-card fade-in" onclick="selectRecitateur(this, 'Sa\'d Al-Ghamidi', 'سعد الغامدي', 'ghamidi')" data-recitateur="ghamidi">
+      <span class="recitateur-icon">🎙️</span>
+      <span class="recitateur-name-ar">سعد الغامدي</span>
+      <span class="recitateur-name-fr">Sa'd Al-Ghamidi</span>
+      <span class="recitateur-style">Murattal</span>
+      <span class="rec-tracks-count" id="count-ghamidi">0 fichier(s)</span>
+    </div>
+    <div class="recitateur-card fade-in" onclick="selectRecitateur(this, 'Maher Al-Muaiqly', 'ماهر المعيقلي', 'muaiqly')" data-recitateur="muaiqly">
+      <span class="recitateur-icon">🎙️</span>
+      <span class="recitateur-name-ar">ماهر المعيقلي</span>
+      <span class="recitateur-name-fr">Maher Al-Muaiqly</span>
+      <span class="recitateur-style">Haramayn</span>
+      <span class="rec-tracks-count" id="count-muaiqly">0 fichier(s)</span>
+    </div>
+    <div class="recitateur-card fade-in" onclick="selectRecitateur(this, 'Abd Al-Rahman Al-Sudais', 'عبد الرحمن السديس', 'sudais')" data-recitateur="sudais">
+      <span class="recitateur-icon">🎙️</span>
+      <span class="recitateur-name-ar">عبد الرحمن السديس</span>
+      <span class="recitateur-name-fr">Abd Al-Rahman Al-Sudais</span>
+      <span class="recitateur-style">Haramayn</span>
+      <span class="rec-tracks-count" id="count-sudais">0 fichier(s)</span>
+    </div>
+    <div class="recitateur-card fade-in" onclick="selectRecitateur(this, 'Idris Abkar', 'إدريس أبكر', 'abkar')" data-recitateur="abkar">
+      <span class="recitateur-icon">🎙️</span>
+      <span class="recitateur-name-ar">إدريس أبكر</span>
+      <span class="recitateur-name-fr">Idris Abkar</span>
+      <span class="recitateur-style">Murattal</span>
+      <span class="rec-tracks-count" id="count-abkar">0 fichier(s)</span>
+    </div>
+    <div class="recitateur-card fade-in" onclick="selectRecitateur(this, 'Nasser Al-Qatami', 'ناصر القطامي', 'qatami')" data-recitateur="qatami">
+      <span class="recitateur-icon">🎙️</span>
+      <span class="recitateur-name-ar">ناصر القطامي</span>
+      <span class="recitateur-name-fr">Nasser Al-Qatami</span>
+      <span class="recitateur-style">Murattal</span>
+      <span class="rec-tracks-count" id="count-qatami">0 fichier(s)</span>
+    </div>
+  </div>
+
+  <!-- LISTE DES PISTES -->
+  <div class="tracks-panel fade-in" id="tracksPanel" style="display:none; max-width:800px; margin:2.5rem auto 0;">
+    <div class="tracks-header">
+      <div>
+        <div class="tracks-title" id="tracksPanelTitle">Récitations disponibles</div>
+        <div class="tracks-subtitle" id="tracksPanelAr" style="font-family:'Noto Naskh Arabic',serif; direction:rtl; color:var(--gold-dark); font-size:1.05rem;"></div>
+      </div>
+      <label class="upload-btn">
+        ➕ Ajouter des MP3
+        <input type="file" accept="audio/mp3,audio/*" multiple onchange="addTracks(event)" style="display:none;">
+      </label>
+    </div>
+    <div class="tracks-list" id="tracksList">
+      <div class="tracks-empty">Aucun fichier MP3 ajouté.<br>Cliquez sur <strong>« Ajouter des MP3 »</strong> pour charger vos récitations.</div>
+    </div>
+  </div>
+
+  <!-- AIDE -->
+  <div class="audio-help fade-in">
+    <strong>💡 Deux façons d'écouter :</strong><br>
+    <strong>En ligne (après mise sur Netlify) :</strong> Placez vos MP3 dans <code>audio/afasy/001-al-fatiha.mp3</code> etc. → ils se chargent automatiquement.<br>
+    <strong>En local (sur votre ordinateur) :</strong> Cliquez sur un récitateur puis <em>« ➕ Ajouter des MP3 »</em> pour sélectionner vos fichiers.
+  </div>
+</section>
+
+<!-- SECTION 2 : TAFSIR -->
+<section id="tafsir" class="sec" style="background: var(--section-bg);">
+  <div class="section-header fade-in">
+    <div class="section-label">التفسير</div>
+    <div class="section-title-fr">Tafsirs — Exégèse coranique</div>
+    <div class="section-title-ar">فهم معاني القرآن الكريم</div>
+    <div class="gold-line" style="margin-top:1rem;"></div>
+  </div>
+  <div class="tafsir-grid">
+    <div class="tafsir-card fade-in">
+      <span class="tafsir-badge">CLASSIQUE</span>
+      <div class="tafsir-title-ar">تفسير ابن كثير</div>
+      <div class="tafsir-title-fr">Tafsir Ibn Kathir</div>
+      <div class="tafsir-desc">L'un des tafsirs les plus célèbres et complets, basé sur le Coran, la Sunnah et les paroles des Compagnons.</div>
+      <div class="tafsir-author">Ibn Kathir Al-Dimashqi (†1373)</div>
+      <a href="tafsirs/ibn-kathir.pdf" target="_blank" class="btn-gold">Lire ›</a>
+    </div>
+    <div class="tafsir-card fade-in">
+      <span class="tafsir-badge">CLASSIQUE</span>
+      <div class="tafsir-title-ar">تفسير الطبري</div>
+      <div class="tafsir-title-fr">Tafsir At-Tabari</div>
+      <div class="tafsir-desc">La référence monumentale de l'exégèse islamique, compilant les paroles des premiers savants.</div>
+      <div class="tafsir-author">Imam At-Tabari (†923)</div>
+      <a href="tafsirs/at-tabari.pdf" target="_blank" class="btn-gold">Lire ›</a>
+    </div>
+    <div class="tafsir-card fade-in">
+      <span class="tafsir-badge">MODERNE</span>
+      <div class="tafsir-title-ar">تفسير السعدي</div>
+      <div class="tafsir-title-fr">Tafsir As-Sa'di</div>
+      <div class="tafsir-desc">Tafsir clair et accessible, mettant en lumière les leçons morales et spirituelles du Coran.</div>
+      <div class="tafsir-author">Sheikh As-Sa'di (†1956)</div>
+      <a href="tafsirs/as-saadi.pdf" target="_blank" class="btn-gold">Lire ›</a>
+    </div>
+    <div class="tafsir-card fade-in">
+      <span class="tafsir-badge">SYNTHÈSE</span>
+      <div class="tafsir-title-ar">تفسير الجلالين</div>
+      <div class="tafsir-title-fr">Tafsir Al-Jalalayn</div>
+      <div class="tafsir-desc">Tafsir concis et méthodique, idéal pour les étudiants commençant l'étude du Coran.</div>
+      <div class="tafsir-author">As-Suyuti & Al-Mahalli</div>
+      <a href="tafsirs/al-jalalayn.pdf" target="_blank" class="btn-gold">Lire ›</a>
+    </div>
+    <div class="tafsir-card fade-in">
+      <span class="tafsir-badge">FRANÇAIS</span>
+      <div class="tafsir-title-ar">ترجمة وتفسير بالفرنسية</div>
+      <div class="tafsir-title-fr">Traduction & Commentaire (FR)</div>
+      <div class="tafsir-desc">Traduction française avec notes explicatives pour les francophones souhaitant comprendre le sens.</div>
+      <div class="tafsir-author">Diverses traductions disponibles</div>
+      <a href="tafsirs/traduction-francaise.pdf" target="_blank" class="btn-gold">Lire ›</a>
+    </div>
+    <div class="tafsir-card fade-in">
+      <span class="tafsir-badge">THÉMATIQUE</span>
+      <div class="tafsir-title-ar">التفسير الموضوعي</div>
+      <div class="tafsir-title-fr">Tafsir thématique</div>
+      <div class="tafsir-desc">Étude des grands thèmes coraniques : l'âme, le paradis, la justice, la miséricorde divine…</div>
+      <div class="tafsir-author">Par thèmes et concepts</div>
+      <a href="tafsirs/thematique.pdf" target="_blank" class="btn-gold">Explorer ›</a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3 : VIDÉOS -->
+<section id="videos" class="sec" style="background: var(--white);">
+  <div class="section-header fade-in">
+    <div class="section-label">الفيديوهات</div>
+    <div class="section-title-fr">Vidéothèque islamique</div>
+    <div class="section-title-ar">مكتبة الفيديو الإسلامية</div>
+    <div class="gold-line" style="margin-top:1rem;"></div>
+    <p style="color:var(--text-muted); font-style:italic; margin-top:0.8rem; font-size:1rem;">Placez vos fichiers MP4 dans le dossier <code style="background:rgba(201,168,76,0.1);padding:0.1rem 0.4rem;border-radius:3px;font-size:0.85rem;">videos/</code> puis mettez à jour les noms ci-dessous</p>
+  </div>
+  <div class="videos-grid">
+
+    <div class="video-card fade-in">
+      <div class="video-embed-wrap">
+        <video controls preload="metadata" poster="">
+          <source src="videos/piliers-islam.mp4" type="video/mp4">
+          Votre navigateur ne supporte pas la vidéo HTML5.
+        </video>
+      </div>
+      <div class="video-info">
+        <div class="video-category">Conférence</div>
+        <div class="video-title">Les piliers de l'Islam expliqués</div>
+        <span class="video-title-ar">أركان الإسلام الخمسة</span>
+      </div>
+    </div>
+
+    <div class="video-card fade-in">
+      <div class="video-embed-wrap">
+        <video controls preload="metadata">
+          <source src="videos/laylat-al-qadr.mp4" type="video/mp4">
+          Votre navigateur ne supporte pas la vidéo HTML5.
+        </video>
+      </div>
+      <div class="video-info">
+        <div class="video-category">Ramadan</div>
+        <div class="video-title">La nuit du Destin — Laylat Al-Qadr</div>
+        <span class="video-title-ar">ليلة القدر وفضلها</span>
+      </div>
+    </div>
+
+    <div class="video-card fade-in">
+      <div class="video-embed-wrap">
+        <video controls preload="metadata">
+          <source src="videos/adhkar.mp4" type="video/mp4">
+          Votre navigateur ne supporte pas la vidéo HTML5.
+        </video>
+      </div>
+      <div class="video-info">
+        <div class="video-category">Dhikr</div>
+        <div class="video-title">Les invocations du matin et du soir</div>
+        <span class="video-title-ar">أذكار الصباح والمساء</span>
+      </div>
+    </div>
+
+    <div class="video-card fade-in">
+      <div class="video-embed-wrap">
+        <video controls preload="metadata">
+          <source src="videos/sira-nabawiyya.mp4" type="video/mp4">
+          Votre navigateur ne supporte pas la vidéo HTML5.
+        </video>
+      </div>
+      <div class="video-info">
+        <div class="video-category">Sira</div>
+        <div class="video-title">La biographie du Prophète ﷺ</div>
+        <span class="video-title-ar">السيرة النبوية الشريفة</span>
+      </div>
+    </div>
+
+    <div class="video-card fade-in">
+      <div class="video-embed-wrap">
+        <video controls preload="metadata">
+          <source src="videos/comment-prier.mp4" type="video/mp4">
+          Votre navigateur ne supporte pas la vidéo HTML5.
+        </video>
+      </div>
+      <div class="video-info">
+        <div class="video-category">Fiqh</div>
+        <div class="video-title">Comment accomplir la prière correctement</div>
+        <span class="video-title-ar">كيفية أداء الصلاة</span>
+      </div>
+    </div>
+
+    <div class="video-card fade-in">
+      <div class="video-embed-wrap">
+        <video controls preload="metadata">
+          <source src="videos/purification-coeur.mp4" type="video/mp4">
+          Votre navigateur ne supporte pas la vidéo HTML5.
+        </video>
+      </div>
+      <div class="video-info">
+        <div class="video-category">Spiritualité</div>
+        <div class="video-title">La purification du cœur en Islam</div>
+        <span class="video-title-ar">تزكية النفس في الإسلام</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION 4 : LIVRES PDF -->
+<section id="livres" class="sec" style="background: var(--section-bg);">
+  <div class="section-header fade-in">
+    <div class="section-label">المكتبة</div>
+    <div class="section-title-fr">Bibliothèque — Livres gratuits en PDF</div>
+    <div class="section-title-ar">مكتبة إسلامية مجانية</div>
+    <div class="gold-line" style="margin-top:1rem;"></div>
+  </div>
+  <div class="livres-grid">
+    <div class="livre-card fade-in">
+      <span class="livre-icon">📗</span>
+      <div class="livre-title-ar">صحيح البخاري</div>
+      <div class="livre-title-fr">Sahih Al-Boukhari</div>
+      <div class="livre-pages">Hadith · 9 volumes</div>
+      <a href="pdf/sahih-boukhari.pdf" target="_blank" class="btn-dl">⬇ Télécharger PDF</a>
+    </div>
+    <div class="livre-card fade-in">
+      <span class="livre-icon">📘</span>
+      <div class="livre-title-ar">صحيح مسلم</div>
+      <div class="livre-title-fr">Sahih Muslim</div>
+      <div class="livre-pages">Hadith · 5 volumes</div>
+      <a href="pdf/sahih-muslim.pdf" target="_blank" class="btn-dl">⬇ Télécharger PDF</a>
+    </div>
+    <div class="livre-card fade-in">
+      <span class="livre-icon">📙</span>
+      <div class="livre-title-ar">رياض الصالحين</div>
+      <div class="livre-title-fr">Riyad As-Salihin</div>
+      <div class="livre-pages">Imam An-Nawawi</div>
+      <a href="pdf/riyad-as-salihin.pdf" target="_blank" class="btn-dl">⬇ Télécharger PDF</a>
+    </div>
+    <div class="livre-card fade-in">
+      <span class="livre-icon">📕</span>
+      <div class="livre-title-ar">الأربعون النووية</div>
+      <div class="livre-title-fr">Les 40 Hadiths d'An-Nawawi</div>
+      <div class="livre-pages">FR + AR · 80 pages</div>
+      <a href="pdf/40-hadiths-nawawi.pdf" target="_blank" class="btn-dl">⬇ Télécharger PDF</a>
+    </div>
+    <div class="livre-card fade-in">
+      <span class="livre-icon">📓</span>
+      <div class="livre-title-ar">زاد المعاد</div>
+      <div class="livre-title-fr">Zad Al-Ma'ad — Ibn Al-Qayyim</div>
+      <div class="livre-pages">Sira & Fiqh · 5 tomes</div>
+      <a href="pdf/zad-al-maad.pdf" target="_blank" class="btn-dl">⬇ Télécharger PDF</a>
+    </div>
+    <div class="livre-card fade-in">
+      <span class="livre-icon">📔</span>
+      <div class="livre-title-ar">فقه السنة</div>
+      <div class="livre-title-fr">Fiqh As-Sunna — Sayyid Sabiq</div>
+      <div class="livre-pages">Jurisprudence islamique</div>
+      <a href="pdf/fiqh-as-sunna.pdf" target="_blank" class="btn-dl">⬇ Télécharger PDF</a>
+    </div>
+    <div class="livre-card fade-in">
+      <span class="livre-icon">📒</span>
+      <div class="livre-title-ar">الوابل الصيب</div>
+      <div class="livre-title-fr">Al-Wabil As-Sayyib</div>
+      <div class="livre-pages">Dhikr & Invocations</div>
+      <a href="pdf/al-wabil-as-sayyib.pdf" target="_blank" class="btn-dl">⬇ Télécharger PDF</a>
+    </div>
+    <div class="livre-card fade-in">
+      <span class="livre-icon">📃</span>
+      <div class="livre-title-ar">دليل الحج والعمرة</div>
+      <div class="livre-title-fr">Guide du Hajj et de la 'Umra</div>
+      <div class="livre-pages">FR · Guide pratique</div>
+      <a href="pdf/guide-hajj-umra.pdf" target="_blank" class="btn-dl">⬇ Télécharger PDF</a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5 : Q&R -->
+<section id="qr" class="sec" style="background: var(--white);">
+  <div class="section-header fade-in">
+    <div class="section-label">الأسئلة والأجوبة</div>
+    <div class="section-title-fr">Questions & Réponses islamiques</div>
+    <div class="section-title-ar">أسئلة وأجوبة شرعية</div>
+    <div class="gold-line" style="margin-top:1rem;"></div>
+  </div>
+
+  <div class="qr-container">
+    <div class="question-item fade-in" onclick="toggleQ(this)">
+      <div class="question-header">
+        <div>
+          <div class="question-fr">Quels sont les piliers de l'Islam ?</div>
+          <span class="question-ar">ما هي أركان الإسلام الخمسة؟</span>
+        </div>
+        <div class="question-toggle">+</div>
+      </div>
+      <div class="question-answer">
+        <div class="answer-text">Les cinq piliers de l'Islam sont : la Shahada (témoignage de foi), la Salat (prière cinq fois par jour), la Zakat (aumône légale), le Sawm (jeûne du Ramadan) et le Hajj (pèlerinage à La Mecque pour celui qui en a la capacité).</div>
+        <div class="answer-source">Source : Sahih Al-Boukhari & Sahih Muslim</div>
+      </div>
+    </div>
+
+    <div class="question-item fade-in" onclick="toggleQ(this)">
+      <div class="question-header">
+        <div>
+          <div class="question-fr">Comment se purifier avant la prière (Wudu) ?</div>
+          <span class="question-ar">كيفية الوضوء الصحيح؟</span>
+        </div>
+        <div class="question-toggle">+</div>
+      </div>
+      <div class="question-answer">
+        <div class="answer-text">Le Wudu comprend : l'intention, la Bismillah, laver les mains, rincer la bouche et le nez, laver le visage, les bras jusqu'aux coudes, passer les mains humides sur la tête, laver les oreilles, puis les pieds jusqu'aux chevilles. Chaque acte est répété trois fois.</div>
+        <div class="answer-source">Source : Sounan Abu Dawud</div>
+      </div>
+    </div>
+
+    <div class="question-item fade-in" onclick="toggleQ(this)">
+      <div class="question-header">
+        <div>
+          <div class="question-fr">Quelle est la différence entre Sunna et Fard ?</div>
+          <span class="question-ar">ما الفرق بين السنة والفرض؟</span>
+        </div>
+        <div class="question-toggle">+</div>
+      </div>
+      <div class="question-answer">
+        <div class="answer-text">Le Fard (obligation) est ce qu'Allah a rendu obligatoire ; son abandon est un péché. La Sunna est ce que le Prophète ﷺ accomplissait régulièrement ; son accomplissement est récompensé mais son abandon n'est pas un péché. La Sunna Mu'akkada est celle que le Prophète ne quittait presque jamais.</div>
+        <div class="answer-source">Source : Fiqh As-Sunna, Sayyid Sabiq</div>
+      </div>
+    </div>
+
+    <div class="question-item fade-in" onclick="toggleQ(this)">
+      <div class="question-header">
+        <div>
+          <div class="question-fr">Peut-on lire le Coran sans Wudu ?</div>
+          <span class="question-ar">هل يجوز قراءة القرآن بدون وضوء؟</span>
+        </div>
+        <div class="question-toggle">+</div>
+      </div>
+      <div class="question-answer">
+        <div class="answer-text">La majorité des savants s'accordent à dire qu'il est interdit de toucher le Mushaf sans purification. Réciter de mémoire ou via un écran numérique sans Wudu est permis selon plusieurs savants contemporains, bien que la purification reste préférable.</div>
+        <div class="answer-source">Source : Fatawa Ibn Baz, Ibn Uthaymin</div>
+      </div>
+    </div>
+
+    <div class="question-item fade-in" onclick="toggleQ(this)">
+      <div class="question-header">
+        <div>
+          <div class="question-fr">Quelles sont les vertus de la sourate Al-Fatiha ?</div>
+          <span class="question-ar">ما فضل سورة الفاتحة؟</span>
+        </div>
+        <div class="question-toggle">+</div>
+      </div>
+      <div class="question-answer">
+        <div class="answer-text">Al-Fatiha est la « Mère du Livre » (Umm Al-Kitab). Le Prophète ﷺ a dit qu'elle est la meilleure sourate du Coran. Elle est indispensable à chaque rak'a de la prière et contient la louange d'Allah, la recherche du droit chemin et la demande de Sa miséricorde.</div>
+        <div class="answer-source">Source : Sahih Al-Boukhari, n°4474</div>
+      </div>
+    </div>
+
+    <!-- FORMULAIRE -->
+    <div class="qr-form fade-in">
+      <div class="form-title">Posez votre question</div>
+      <span class="form-title-ar">اطرح سؤالك الشرعي هنا</span>
+      <div class="form-row">
+        <div class="form-group">
+          <label>VOTRE NOM</label>
+          <input type="text" placeholder="Votre prénom">
+        </div>
+        <div class="form-group">
+          <label>EMAIL</label>
+          <input type="email" placeholder="votre@email.com">
+        </div>
+        <div class="form-group full">
+          <label>CATÉGORIE</label>
+          <select>
+            <option>Choisir une catégorie…</option>
+            <option>Aqida (Foi)</option>
+            <option>Fiqh (Jurisprudence)</option>
+            <option>Tafsir (Exégèse)</option>
+            <option>Hadith</option>
+            <option>Morale & Spiritualité</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>VOTRE QUESTION</label>
+          <textarea placeholder="Posez votre question ici… (Français ou العربية)"></textarea>
+        </div>
+      </div>
+      <button class="btn-submit">Envoyer la question ›</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+  <div class="gold-line"></div>
+  <div style="font-family:'Cormorant Garamond',serif; font-size:1rem; color:rgba(232,213,163,0.75); font-style:italic; margin-top:0.5rem;">Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux</div>
+  <div class="footer-text">نور القرآن — Lumière du Coran · Portail islamique francophone · Tous droits réservés</div>
+</footer>
+
+<script>
+  // ── AUDIO PLAYER ──────────────────────────────────────────────
+  const audio = document.getElementById('audioPlayer');
+  const playBtn = document.getElementById('playBtn');
+  const progressFill = document.getElementById('progressFill');
+  const timeElapsed = document.getElementById('timeElapsed');
+  const timeDuration = document.getElementById('timeDuration');
+  const tracksList = document.getElementById('tracksList');
+  const tracksPanel = document.getElementById('tracksPanel');
+
+  let library = {}; // { recitateur_id: [ {name, url, duration} ] }
+  let currentRec = null;
+  let currentTrackIndex = -1;
+  let isPlaying = false;
+
+  function fmtTime(s) {
+    if (isNaN(s) || !isFinite(s)) return '0:00';
+    const m = Math.floor(s / 60), sec = Math.floor(s % 60);
+    return m + ':' + (sec < 10 ? '0' : '') + sec;
+  }
+
+  function selectRecitateur(el, nameFr, nameAr, recId) {
+    document.querySelectorAll('.recitateur-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    currentRec = recId;
+    document.getElementById('tracksPanelTitle').textContent = nameFr;
+    document.getElementById('tracksPanelAr').textContent = nameAr;
+    tracksPanel.style.display = 'block';
+    renderTracks();
+    tracksPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function addTracks(event) {
+    if (!currentRec) return;
+    const files = Array.from(event.target.files);
+    if (!library[currentRec]) library[currentRec] = [];
+    files.forEach(file => {
+      const url = URL.createObjectURL(file);
+      const name = file.name.replace(/\.(mp3|ogg|wav|m4a|aac)$/i, '');
+      library[currentRec].push({ name, url, duration: null });
+      // preload duration
+      const tmp = new Audio(url);
+      tmp.addEventListener('loadedmetadata', () => {
+        const entry = library[currentRec].find(t => t.url === url);
+        if (entry) { entry.duration = tmp.duration; renderTracks(); }
+      });
+    });
+    event.target.value = '';
+    updateCount(currentRec);
+    renderTracks();
+  }
+
+  function updateCount(recId) {
+    const el = document.getElementById('count-' + recId);
+    if (el) {
+      const n = library[recId] ? library[recId].length : 0;
+      el.textContent = n + ' fichier' + (n > 1 ? 's' : '');
+    }
+  }
+
+  function renderTracks() {
+    const tracks = library[currentRec] || [];
+    if (tracks.length === 0) {
+      tracksList.innerHTML = '<div class="tracks-empty">Aucun fichier MP3 ajouté.<br>Cliquez sur <strong>« Ajouter des MP3 »</strong> pour charger vos récitations.</div>';
+      return;
+    }
+    tracksList.innerHTML = tracks.map((t, i) => `
+      <div class="track-item${currentRec === currentRec && currentTrackIndex === i ? ' playing' : ''}" id="track-${i}" onclick="playTrack(${i})">
+        <div class="track-play-icon">${currentTrackIndex === i && isPlaying ? '▶' : ''}</div>
+        <div class="track-num">${i + 1}</div>
+        <div class="track-name">${t.name}</div>
+        <div class="track-dur">${t.duration ? fmtTime(t.duration) : '...'}</div>
+        <button class="track-del" onclick="event.stopPropagation(); deleteTrack(${i})" title="Supprimer">✕</button>
+      </div>
+    `).join('');
+  }
+
+  function playTrack(index) {
+    const tracks = library[currentRec];
+    if (!tracks || !tracks[index]) return;
+    currentTrackIndex = index;
+    audio.src = tracks[index].url;
+    audio.play();
+    isPlaying = true;
+    playBtn.textContent = '⏸';
+    document.getElementById('playerName').textContent = document.getElementById('tracksPanelTitle').textContent;
+    document.getElementById('playerSourate').textContent = tracks[index].name;
+    renderTracks();
+  }
+
+  function togglePlay() {
+    if (!audio.src) return;
+    if (isPlaying) { audio.pause(); playBtn.textContent = '▶'; isPlaying = false; }
+    else { audio.play(); playBtn.textContent = '⏸'; isPlaying = true; }
+  }
+
+  function nextTrack() {
+    if (!currentRec || !library[currentRec]) return;
+    const next = (currentTrackIndex + 1) % library[currentRec].length;
+    playTrack(next);
+  }
+
+  function prevTrack() {
+    if (!currentRec || !library[currentRec]) return;
+    const prev = (currentTrackIndex - 1 + library[currentRec].length) % library[currentRec].length;
+    playTrack(prev);
+  }
+
+  function deleteTrack(index) {
+    if (!library[currentRec]) return;
+    URL.revokeObjectURL(library[currentRec][index].url);
+    library[currentRec].splice(index, 1);
+    if (currentTrackIndex === index) { audio.pause(); audio.src = ''; isPlaying = false; playBtn.textContent = '▶'; currentTrackIndex = -1; }
+    else if (currentTrackIndex > index) currentTrackIndex--;
+    updateCount(currentRec);
+    renderTracks();
+  }
+
+  function seekAudio(e) {
+    if (!audio.duration) return;
+    const bar = e.currentTarget;
+    const ratio = e.offsetX / bar.offsetWidth;
+    audio.currentTime = ratio * audio.duration;
+  }
+
+  function setVolume(v) { audio.volume = v; }
+
+  audio.addEventListener('timeupdate', () => {
+    if (!audio.duration) return;
+    const pct = (audio.currentTime / audio.duration) * 100;
+    progressFill.style.width = pct + '%';
+    timeElapsed.textContent = fmtTime(audio.currentTime);
+    timeDuration.textContent = fmtTime(audio.duration);
+  });
+
+  audio.addEventListener('ended', () => {
+    isPlaying = false;
+    playBtn.textContent = '▶';
+    nextTrack();
+  });
+
+  // ── NAV ACTIVE ────────────────────────────────────────────────
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    document.querySelectorAll('section[id]').forEach(s => {
+      if (window.scrollY >= s.offsetTop - 160) cur = s.id;
+    });
+    document.querySelectorAll('nav a').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+    });
+  });
+
+  // ── FADE IN ───────────────────────────────────────────────────
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  // ── SMOOTH SCROLL ─────────────────────────────────────────────
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // ── Q&R ───────────────────────────────────────────────────────
+  function toggleQ(el) { el.classList.toggle('open'); }
+</script>
+</body>
+</html>
